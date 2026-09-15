@@ -33,15 +33,4 @@ namespace omni_direction
 
     };
 
-    inline WheelGeometry& Geometry::getWheel(int index) const
-    {
-        if(index >= num_wheel_)
-        {
-            std::cout << "The index reference is invalid\n" 
-            return nullptr;
-        }
-
-        return wheels_.at(index);
-
-    }
 }
