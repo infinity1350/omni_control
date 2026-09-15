@@ -13,6 +13,7 @@ namespace omni_direction
         Eigen::Vector2d position;
         Eigen::Vector2d rolling_direction;
         double angle;
+
     }
     class Geometry
     {
@@ -27,9 +28,9 @@ namespace omni_direction
             double radius_;
             int num_wheel_;
             double robot_radius_;
+            void computeWheelGeometry();
 
             std::vector<WheelGeometry> wheels_;
-            void computeWheelGeometry();
 
     };
 
