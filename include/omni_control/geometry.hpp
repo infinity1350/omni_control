@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+
 #include <Eigen::Core>
 #include <vector>
 #include <Eigen/Dense>
@@ -14,18 +14,18 @@ namespace omni_direction
         Eigen::Vector2d rolling_direction;
         double angle;
 
-    }
+    };
     class Geometry
     {
         public:    
-            Geometry(double radius, int num_wheels, int robot_radius);
+            Geometry(double radius, int num_wheels, double robot_radius);
             
-            WheelGeometry& getWheel(int index) const;
+            const WheelGeometry& getWheel(int index) const;
 
             int getNumWheel() const;
 
         private:
-            double radius_;
+            double wheel_radius_;
             int num_wheel_;
             double robot_radius_;
             void computeWheelGeometry();
