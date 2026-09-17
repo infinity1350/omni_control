@@ -5,10 +5,17 @@ namespace omni_direction
 {
     Geometry::Geometry(double radius,
         int num_wheels,
-        int robot_radius)
+        double robot_radius)
         :wheel_radius_(radius), num_wheel_(num_wheels), robot_wheel_radius_(robot_radius) 
     {
-        computeWheelGeometry();
+        if (num_wheels < 3)
+            throw std::invalid_argument("Need at least 3 wheels");
+
+        if (wheel_radius <= 0.0 || robot_radius <= 0.0)
+            throw std::invalid_argument("Radius must be positive");
+        
+            computeWheelGeometry();
+
     }
 
     void Geometry::computeWheelGeometry()
@@ -41,7 +48,7 @@ namespace omni_direction
         return num_wheel_;
     }
 
-    const WheelGeometry& Geometry::getWheel(int index)
+    const WheelGeometry& Geometry::getWheel(int index) const
     {
         
         return wheels_.at(index);
