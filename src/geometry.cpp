@@ -13,14 +13,26 @@ namespace omni_direction
 
     void Geometry::computeWheelGeometry()
     {
+        wheels_.clear();
+        wheels_.reserver(num_wheel_);
         
         for(int i = 0; i < num_wheel_; i++)
         {
-            WheelGeometry wheel;
-            double theta = (2 * M_PI * i)/num_wheel_;
-            wheel.position  = {robot_radius_ * std::cos(theta), robot_radius_ * std::sin(theta)};
-            wheel.radius = robot_radius_;
-            
+            double theta = (2 * M_PI / num_wheel_) * i;
+            Eigen::Vector2d positions(
+                radius_ * std::math.cos(theta), radius_ * std::math.sin(theta);
+            );
+            Eigen::Vector2d rolling_dir_unnormalized(-positions.y(), position.x());
+            Eigen::Vector2d rolling_dir = rolling_direction_unormalized.normalized();
+
+            WheelGeometry w;
+            w.angle = theta;
+            w.radius = radius_;
+            w.position = positions;
+            w.rolling_direction_ = rolling_dir;
+
+            wheels_.push_back(w);
+
         }
     }
 
