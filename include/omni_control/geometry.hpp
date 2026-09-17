@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Eigen::Core>
+#include <Eigen/Core>
 #include <vector>
 #include <Eigen/Dense>
 
@@ -9,7 +9,6 @@ namespace omni_direction
     
     struct WheelGeometry
     {
-        double radius;
         Eigen::Vector2d position;
         Eigen::Vector2d rolling_direction;
         double angle;
@@ -22,7 +21,7 @@ namespace omni_direction
             
             const WheelGeometry& getWheel(int index) const;
 
-            int getNumWheel() const;
+            size_t getNumWheel() const;
 
         private:
             double wheel_radius_;
