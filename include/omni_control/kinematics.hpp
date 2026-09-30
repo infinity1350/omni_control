@@ -13,6 +13,7 @@ namespace omni_direction
 
             WheelState commputeWheelSpeeds(const Twist2D& twist) const;
 
+
         private:
             Geometry geometry_;
     };
