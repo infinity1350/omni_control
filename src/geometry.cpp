@@ -55,4 +55,14 @@ namespace omni_direction
         
     }
 
+    double Geometry::getRobotRadius() const
+    {
+        return robot_radius_;
+    }
+
+    double Geometry::getWheelRadius() const
+    {
+        return wheel_radius_;
+    }
+
 }

@@ -1,21 +1,21 @@
-#include <kinematics.hpp>
+#include <omni_control/kinematics.hpp>
 
 namespace omni_direction
 {
-    explicit Kinematics::Kinematics(const Geometry& geometry)
+    Kinematics::Kinematics(const Geometry& geometry)
         : geometry_(geometry)
     {
     }
 
-    WheelState computeWheelSpeeds(const Twist2d & twist) const
+    WheelState Kinematics::computeWheelSpeeds(const Twist2D & twist) const
     {
         WheelState wheel_speed;
-        for(size_t i = 0; i <= geometry_.wheels.size(); i++)
+        for(size_t i = 0; i < geometry_.getNumWheel(); i++)
         {
-            WheelGeometry wheel = getwheel(i);
+            WheelGeometry wheel = geometry_.getWheel(i);
             wheel_speed[i] = (twist.vx * wheel.rolling_direction.x() 
                             + twist.vy * wheel.rolling_direction.y()
-                            + robot_radius_* twist.omega) / wheel_radius_;
+                            + geometry_.getRobotRadius() * twist.omega) / geometry_.getWheelRadius();
         }
 
         return wheel_speed;

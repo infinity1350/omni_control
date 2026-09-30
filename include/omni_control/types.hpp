@@ -1,29 +1,29 @@
 #pragma once
 #include <iostream>
 
-namespace omni_kinematics
+namespace omni_direction
 {
     struct Twist2D
     {
-        double vx{0.0},
-        double vy{0.0},
-        double theta{0.0}
+        double vx{0.0};
+        double vy{0.0};
+        double omega{0.0};
     };
 
-    struct Pose2D
+    struct Pose2d
     {
-        double x{0.0},
-        double y{0.0},
-        double theta{0.0}
+        double x{0.0};
+        double y{0.0};
+        double theta{0.0};
     };
 
     struct WheelState
     {
-        double w1{0.0},
-        double w2{0.0},
-        double w3{0.0}
+        double w1{0.0};
+        double w2{0.0};
+        double w3{0.0};
 
-        double operator[](const int i)
+        double& operator[](const int i)
         {
             switch(i)
             {
@@ -37,5 +37,5 @@ namespace omni_kinematics
             }
 
         }
-    }
+    };
 }

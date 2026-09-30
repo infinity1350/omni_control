@@ -23,12 +23,15 @@ namespace omni_direction
 
             size_t getNumWheel() const;
 
+            double getRobotRadius() const;
+
+            double getWheelRadius() const;
+
         private:
             double wheel_radius_;
             int num_wheel_;
             double robot_radius_;
             void computeWheelGeometry();
-
             std::vector<WheelGeometry> wheels_;
 
     };
