@@ -9,13 +9,22 @@ namespace omni_direction
 
     WheelState Kinematics::computeWheelSpeeds(const Twist2D & twist) const
     {
-        WheelState wheel_speed;
+        const WheelState& wheel_speed(geometry_.getNumWheel());
+        
         for(size_t i = 0; i < geometry_.getNumWheel(); i++)
         {
             WheelGeometry wheel = geometry_.getWheel(i);
-            wheel_speed[i] = (twist.vx * wheel.rolling_direction.x() 
-                            + twist.vy * wheel.rolling_direction.y()
-                            + geometry_.getRobotRadius() * twist.omega) / geometry_.getWheelRadius();
+
+            const double nx = wheel.rolling_direction.x();
+            const double ny = wheel.rolling_direction.y();
+        
+            const double x = wheel.position.x();
+            const double y = wheel.position.y();
+
+            const double rotational = -nx * y + ny * x;
+            wheel_speed[i] = (twist.vx * nx 
+                            + twist.vy * ny
+                            + rotational * twist.omega) / geometry_.getWheelRadius();
         }
 
         return wheel_speed;

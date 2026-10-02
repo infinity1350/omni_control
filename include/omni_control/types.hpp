@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <Eigen/Core>
+#include <cstddef>
 
 namespace omni_direction
 {
@@ -19,23 +21,28 @@ namespace omni_direction
 
     struct WheelState
     {
-        double w1{0.0};
-        double w2{0.0};
-        double w3{0.0};
+        Eigen::VectorXd speeds;
+
+        explicit WheelState(std::size_t num_wheels) : speeds(num_wheels)
+        {
+            speeds.setZero();
+        }    
+        
 
         double& operator[](const int i)
         {
-            switch(i)
-            {
-                case 0 : return w1;
-                    break;
-                case 1 : return w2;
-                    break;
-                case 2 : return w3;
-                    break;
-                default : throw std::out_of_range("Wheel out of range");
-            }
-
+            return speeds[i];
         }
+
+        const double&  operator[](const int i)
+        {
+            return speeds[i];
+        }
+
+        std::size_t numWheels() const
+        {
+            return speeds.size();
+        }
+
     };
 }
