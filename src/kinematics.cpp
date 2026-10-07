@@ -9,7 +9,7 @@ namespace omni_direction
 
     WheelState Kinematics::computeWheelSpeeds(const Twist2D & twist) const
     {
-        const WheelState& wheel_speed(geometry_.getNumWheel());
+        WheelState wheel_speed(geometry_.getNumWheel());
         
         for(size_t i = 0; i < geometry_.getNumWheel(); i++)
         {

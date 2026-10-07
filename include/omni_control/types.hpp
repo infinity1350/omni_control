@@ -34,7 +34,7 @@ namespace omni_direction
             return speeds[i];
         }
 
-        const double&  operator[](const int i)
+        const double&  operator[](const int i) const
         {
             return speeds[i];
         }
