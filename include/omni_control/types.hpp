@@ -3,7 +3,7 @@
 #include <Eigen/Core>
 #include <cstddef>
 
-namespace omni_direction
+namespace omni_control
 {
     struct Twist2D
     {
@@ -12,7 +12,7 @@ namespace omni_direction
         double omega{0.0};
     };
 
-    struct Pose2d
+    struct Pose2D
     {
         double x{0.0};
         double y{0.0};

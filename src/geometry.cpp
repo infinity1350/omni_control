@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace omni_direction
+namespace omni_control
 {
     Geometry::Geometry(double radius,
         int num_wheels,

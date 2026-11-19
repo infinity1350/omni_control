@@ -4,7 +4,7 @@
 #include <vector>
 #include <Eigen/Dense>
 
-namespace omni_direction
+namespace omni_control
 {
     
     struct WheelGeometry

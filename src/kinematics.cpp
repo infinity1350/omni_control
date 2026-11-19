@@ -1,6 +1,6 @@
 #include <omni_control/kinematics.hpp>
 
-namespace omni_direction
+namespace omni_control
 {
     Kinematics::Kinematics(const Geometry& geometry)
         : geometry_(geometry)
@@ -28,6 +28,14 @@ namespace omni_direction
         }
 
         return wheel_speed;
+    }
+
+    Twist2D Kinematics::computeTwist(const WheelState & ws)
+    {
+        for(int i = 0; i < ws.numWheels(); i++)
+        {
+            
+        }
     }
 
 }
