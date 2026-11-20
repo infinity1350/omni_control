@@ -36,20 +36,12 @@ namespace omni_control
         // Step 2 : Get the twist value of the robot
         auto twist = kinematics_.computeTwist(ws);
 
-        if(!std::isfinite(twist.vx))
+        if(!std::isfinite(twist.vx) || !std::isfinite(twist.vy) || !std::isfinite(twist.omega) )
         {
             return false;
         }
-        if(!std::isfinite(twist.vy))
-        {
-            return false;
-        }
-        if(!std::isfinite(twist.omega))
-        {
-            return false;
-        }
-        
         current_twist_ = twist;
+
         // Step 3 : average the global angle with the current reported twist angle value 
         auto theta_avg = current_pose_.theta + current_twist_.omega * dt / 2; 
         
